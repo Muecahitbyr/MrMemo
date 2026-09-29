@@ -1,0 +1,1074 @@
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background: var(--black);
+  text-align: center;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center 30%;
+}
+
+.hero__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 45%, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.7)),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, transparent 30%, transparent 60%, var(--black) 100%);
+  opacity: 0.85;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--nav-height) var(--gutter) 0;
+}
+
+.hero__title {
+  font-size: clamp(4rem, 15vw, 12.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+  text-shadow: 0 10px 60px rgba(0, 0, 0, 0.35);
+}
+
+.hero__subtitle {
+  margin-top: 0.5em;
+  font-size: clamp(1.375rem, 3.2vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+  margin-top: 36px;
+}
+
+.hero .status-pill {
+  margin-top: 28px;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  width: 24px;
+  height: 38px;
+  margin-left: -12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 14px;
+}
+
+.hero__scroll span {
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  width: 3px;
+  height: 7px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--white);
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-hint {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+/* ==========================================================================
+   Statement
+   ========================================================================== */
+.statement {
+  padding-block: clamp(120px, 22vh, 260px);
+  background: var(--black);
+}
+
+.statement__text {
+  max-width: 22ch;
+  margin-inline: auto;
+  font-size: clamp(2rem, 5.2vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  text-align: center;
+}
+
+.statement__text .word {
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Zoom-Reveal (Sticky)
+   ========================================================================== */
+.zoom {
+  position: relative;
+  height: 280vh;
+  background: var(--black);
+}
+
+.zoom__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.zoom__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  clip-path: inset(20% 24% 20% 24% round 32px);
+  will-change: clip-path;
+}
+
+.zoom__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.zoom__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--gutter) var(--gutter) clamp(48px, 10vh, 120px);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 55%, transparent 100%);
+  text-align: center;
+}
+
+.zoom__title {
+  font-size: clamp(3rem, 9vw, 8rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+}
+
+.zoom__sub {
+  margin-top: 16px;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 700px) {
+  .zoom__frame {
+    clip-path: inset(24% 10% 24% 10% round 24px);
+  }
+}
+
+/* ==========================================================================
+   Leistungen (Bento-Grid)
+   ========================================================================== */
+.services {
+  padding-block: var(--section-space);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: clamp(300px, 30vw, 380px);
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--white);
+  isolation: isolate;
+}
+
+.card--xl {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.card__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 120%;
+  margin-top: -10%;
+  object-fit: cover;
+  transition: scale 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.card:hover .card__media img {
+  scale: 1.05;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.15) 45%, transparent 70%);
+}
+
+.card__body {
+  position: absolute;
+  inset: auto 0 0;
+  padding: clamp(24px, 3vw, 36px);
+}
+
+.card h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.card--xl h3 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.card p {
+  margin-top: 6px;
+  max-width: 32ch;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+@media (max-width: 833px) {
+  .bento {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bento {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(400px, auto);
+  }
+
+  .card--xl {
+    grid-column: auto;
+    grid-row: span 1;
+    min-height: 480px;
+  }
+}
+
+/* ==========================================================================
+   Preise
+   ========================================================================== */
+.prices {
+  padding-block: var(--section-space);
+  background: var(--black);
+}
+
+.prices__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(48px, 7vw, 100px);
+  align-items: start;
+}
+
+/* Grid-Spalten dürfen schmaler werden als die Tab-Leiste (die scrollt dann) */
+.prices__grid > * {
+  min-width: 0;
+}
+
+.prices__intro .section-lead {
+  margin-bottom: 40px;
+}
+
+/* Highlight-Karte mit Verlaufsrahmen */
+.price-feature {
+  position: relative;
+  max-width: 420px;
+  padding: clamp(28px, 3.5vw, 40px);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(232, 137, 79, 0.22), transparent 55%) padding-box,
+    linear-gradient(var(--card-dark), var(--card-dark)) padding-box,
+    var(--accent-gradient) border-box;
+}
+
+.price-feature__label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 980px;
+  background: var(--accent-gradient);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.price-feature__name {
+  margin-top: 20px;
+  font-size: clamp(1.625rem, 2.6vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.price-feature__desc {
+  margin-top: 6px;
+  color: var(--muted);
+}
+
+.price-feature__price {
+  margin: 20px 0 28px;
+  font-size: clamp(3.5rem, 6vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Segmented Control (wie in iOS) */
+.segmented {
+  position: relative;
+  display: inline-flex;
+  max-width: 100%;
+  padding: 4px;
+  border-radius: 980px;
+  background: #1d1d1f;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.segmented::-webkit-scrollbar {
+  display: none;
+}
+
+.segmented__indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  border-radius: 980px;
+  background: var(--light);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.45s cubic-bezier(0.3, 0.8, 0.2, 1), width 0.45s cubic-bezier(0.3, 0.8, 0.2, 1);
+}
+
+.segmented__tab {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  padding: 10px 20px;
+  border-radius: 980px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: rgba(245, 245, 247, 0.7);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.segmented__tab:hover {
+  color: var(--light);
+}
+
+.segmented__tab[aria-selected='true'] {
+  color: var(--ink);
+}
+
+/* Alle Panels im selben Grid-Feld → konstante Höhe */
+.prices__panels {
+  display: grid;
+  margin-top: 28px;
+}
+
+.prices__panel {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.prices__panel.is-active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 22px;
+  border-bottom: 1px solid #2a2a2c;
+}
+
+.price-row__name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.price-row__badge {
+  padding: 2px 10px;
+  border-radius: 980px;
+  background: var(--accent-gradient);
+  color: var(--ink);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.price-row__desc {
+  margin-top: 2px;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.price-row__price {
+  flex: none;
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-on-dark);
+}
+
+.prices__note {
+  margin-top: 24px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+@media (max-width: 833px) {
+  .prices__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .price-feature {
+    max-width: none;
+  }
+}
+
+/* ==========================================================================
+   Erlebnis (Sticky Scrollytelling)
+   ========================================================================== */
+.story {
+  padding-block: var(--section-space);
+  background: var(--black);
+}
+
+.story__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(40px, 7vw, 110px);
+}
+
+.story__sticky {
+  position: sticky;
+  top: calc(var(--nav-height) + 8vh);
+}
+
+.story__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 76vh;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--card-dark);
+}
+
+.story__frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 0.9s ease, transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.story__frame img.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.story__progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.story__progress span {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.story__progress span.is-active {
+  width: 28px;
+  background: var(--light);
+}
+
+.story__head {
+  padding-top: 8vh;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 78vh;
+  opacity: 0.22;
+  transition: opacity 0.6s ease;
+}
+
+.step.is-active {
+  opacity: 1;
+}
+
+.step__num {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--accent-on-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.step h3 {
+  margin-top: 10px;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.step p {
+  margin-top: 16px;
+  max-width: 30ch;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+@media (max-width: 833px) {
+  .story__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Bild bleibt oben kleben, Text scrollt darunter durch */
+  .story__visual {
+    position: sticky;
+    top: var(--nav-height);
+    z-index: 2;
+    padding-block: 12px 20px;
+    background: var(--black);
+  }
+
+  .story__sticky {
+    position: static;
+  }
+
+  .story__frame {
+    aspect-ratio: 16 / 11;
+    max-height: 40vh;
+    width: 100%;
+  }
+
+  .story__progress {
+    margin-top: 14px;
+  }
+
+  /* Überschrift → klebendes Bild → Schritte */
+  .story__steps {
+    display: contents;
+  }
+
+  .story__head {
+    order: -1;
+    padding: 0 0 32px;
+  }
+
+  .step {
+    order: 1;
+    min-height: 55vh;
+  }
+}
+
+/* ==========================================================================
+   Zahlen
+   ========================================================================== */
+.stats {
+  padding-block: clamp(80px, 11vw, 140px);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+.stat__value {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(180deg, var(--ink) 30%, #6e6e73 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat__star {
+  margin-left: 0.05em;
+  font-size: 0.6em;
+  vertical-align: 0.35em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.stat__label {
+  margin-top: 12px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+@media (max-width: 833px) {
+  .stats__grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 56px;
+  }
+}
+
+/* ==========================================================================
+   Galerie (horizontal)
+   ========================================================================== */
+.gallery {
+  background: var(--black);
+  overflow: hidden;
+}
+
+.gallery__pin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: calc(var(--nav-height) + 40px) 60px;
+}
+
+.gallery__head {
+  margin-bottom: clamp(32px, 5vh, 56px);
+}
+
+.gallery__track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  padding-inline: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  will-change: transform;
+}
+
+.gallery__item {
+  flex: none;
+  width: clamp(280px, 30vw, 440px);
+  height: min(56vh, 560px);
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--card-dark);
+}
+
+.gallery__item--tall {
+  height: min(66vh, 660px);
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.gallery__item:hover img {
+  scale: 1.05;
+}
+
+/* Mobil: natives horizontales Wischen mit Snap */
+@media (max-width: 899px) {
+  .gallery__pin {
+    min-height: 0;
+    padding-block: var(--section-space);
+  }
+
+  .gallery__track {
+    width: auto;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+    padding-bottom: 8px;
+  }
+
+  .gallery__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery__item {
+    width: 76vw;
+    height: 60vh;
+    max-height: 520px;
+    scroll-snap-align: start;
+  }
+
+  .gallery__item--tall {
+    height: 60vh;
+  }
+}
+
+/* ==========================================================================
+   Rezensionen
+   ========================================================================== */
+.reviews {
+  padding-block: var(--section-space);
+  background: var(--black);
+}
+
+.reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(28px, 3.5vw, 44px);
+  border-radius: var(--radius);
+  background: var(--card-dark);
+}
+
+.review__stars {
+  letter-spacing: 0.15em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.review p {
+  margin-top: 20px;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.review footer {
+  margin-top: auto;
+  padding-top: 32px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.reviews__more {
+  margin-top: 40px;
+  text-align: center;
+}
+
+@media (max-width: 833px) {
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Öffnungszeiten
+   ========================================================================== */
+.hours {
+  padding-block: var(--section-space);
+}
+
+.hours__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
+}
+
+.hours__list {
+  padding: clamp(12px, 2vw, 20px) clamp(24px, 3vw, 40px);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.18);
+}
+
+.hours__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-block: 20px;
+  font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+  font-variant-numeric: tabular-nums;
+}
+
+.hours__row + .hours__row {
+  border-top: 1px solid var(--line);
+}
+
+.hours__row.is-closed {
+  color: var(--muted);
+}
+
+.hours__row.is-today {
+  font-weight: 700;
+}
+
+.hours__day {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hours__badge {
+  padding: 3px 10px;
+  border-radius: 980px;
+  background: var(--accent-gradient);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@media (max-width: 833px) {
+  .hours__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Kontakt & Karte
+   ========================================================================== */
+.contact {
+  padding-block: var(--section-space);
+  background: var(--black);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(48px, 7vw, 100px);
+  align-items: center;
+}
+
+.contact__list {
+  display: grid;
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.contact__list dt {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.contact__list dd {
+  margin-top: 4px;
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.contact__list a:hover {
+  color: var(--accent-on-dark);
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.map {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(232, 137, 79, 0.18), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 48px),
+    var(--card-dark);
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.3) contrast(1.05);
+}
+
+.map__consent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px;
+  text-align: center;
+}
+
+.map__pin {
+  width: 48px;
+  height: 48px;
+  fill: var(--accent-2);
+  filter: drop-shadow(0 10px 20px rgba(232, 137, 79, 0.4));
+}
+
+.map__title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.map__text {
+  max-width: 36ch;
+  margin-bottom: 12px;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.map__text a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 833px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Finale & Footer
+   ========================================================================== */
+.finale {
+  padding-block: clamp(120px, 24vh, 280px);
+  background: var(--black);
+  text-align: center;
+  overflow: hidden;
+}
+
+.finale__title {
+  font-size: clamp(4.5rem, 17vw, 15rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  white-space: nowrap;
+  padding-bottom: 0.12em; /* Platz für Unterlängen (g), sonst schneidet background-clip ab */
+}
+
+.finale__sub {
+  margin-top: 24px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.footer {
+  padding-block: 28px 40px;
+  border-top: 1px solid #262628;
+  background: var(--black);
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 32px;
+}
+
+.footer a:hover {
+  color: var(--light);
+}
+
+.footer__links {
+  display: flex;
+  gap: 24px;
+}
+
+/* ==========================================================================
+   Bewegung reduzieren
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .zoom {
+    height: auto;
+  }
+
+  .zoom__sticky {
+    position: relative;
+  }
+
+  .zoom__frame {
+    clip-path: none;
+  }
+}

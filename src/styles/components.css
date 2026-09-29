@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Navigation (Glas-Effekt wie apple.com)
+   ========================================================================== */
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  color: var(--light);
+  transition: color 0.4s ease;
+}
+
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--nav-height);
+  background: rgba(22, 22, 23, 0);
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+  z-index: -1;
+}
+
+.nav.is-scrolled::before,
+.nav.is-menu-open::before {
+  background: rgba(22, 22, 23, 0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.nav--light:not(.is-menu-open) {
+  color: var(--ink);
+}
+
+.nav--light.is-scrolled:not(.is-menu-open)::before {
+  background: rgba(245, 245, 247, 0.72);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: var(--nav-height);
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.nav__mark {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.nav__logo:hover .nav__mark {
+  transform: rotate(-12deg) scale(1.06);
+}
+
+.nav__links {
+  display: flex;
+  gap: 32px;
+  margin-left: auto;
+  font-size: 0.8125rem;
+}
+
+.nav__links a {
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.nav__links a:hover {
+  opacity: 1;
+}
+
+.nav__cta {
+  padding: 6px 14px;
+  border-radius: 980px;
+  background: var(--accent-gradient);
+  color: var(--ink);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.nav__cta:hover {
+  filter: brightness(1.08);
+  transform: scale(1.04);
+}
+
+.nav__toggle {
+  display: none;
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin-right: -8px;
+}
+
+.nav__toggle span {
+  position: absolute;
+  left: 10px;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), top 0.35s;
+}
+
+.nav__toggle span:first-child {
+  top: 14px;
+}
+
+.nav__toggle span:last-child {
+  top: 21px;
+}
+
+.is-menu-open .nav__toggle span:first-child {
+  top: 17.5px;
+  transform: rotate(45deg);
+}
+
+.is-menu-open .nav__toggle span:last-child {
+  top: 17.5px;
+  transform: rotate(-45deg);
+}
+
+/* Mobiles Menü */
+.mobile-menu {
+  position: fixed;
+  inset: var(--nav-height) 0 0;
+  padding: 24px var(--gutter);
+  background: rgba(22, 22, 23, 0.94);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.is-menu-open .mobile-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu a {
+  padding: 10px 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.is-menu-open .mobile-menu a {
+  opacity: 1;
+  transform: none;
+}
+
+.is-menu-open .mobile-menu a:nth-child(2) { transition-delay: 0.03s; }
+.is-menu-open .mobile-menu a:nth-child(3) { transition-delay: 0.06s; }
+.is-menu-open .mobile-menu a:nth-child(4) { transition-delay: 0.09s; }
+.is-menu-open .mobile-menu a:nth-child(5) { transition-delay: 0.12s; }
+.is-menu-open .mobile-menu a:nth-child(6) { transition-delay: 0.15s; }
+.is-menu-open .mobile-menu a:nth-child(7) { transition-delay: 0.18s; }
+
+.mobile-menu__phone {
+  margin-top: 16px;
+  color: var(--accent-on-dark);
+}
+
+/* Nav-Links brauchen ~1000px Platz, darunter Burger-Menü */
+@media (max-width: 1023px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__cta {
+    margin-left: auto;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 48px;
+  padding: 12px 26px;
+  border-radius: 980px;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: transform 0.25s ease, filter 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.btn--primary {
+  background: var(--accent-gradient);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.btn--primary:hover {
+  filter: brightness(1.08);
+  transform: scale(1.03);
+}
+
+.btn--ghost {
+  border: 1px solid currentColor;
+}
+
+.btn--ghost:hover {
+  background: var(--light);
+  color: var(--ink);
+}
+
+.btn--link {
+  padding-inline: 8px;
+  color: var(--accent-on-dark);
+}
+
+.btn--link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.section--light .btn--link {
+  color: var(--accent-on-light);
+}
+
+/* ==========================================================================
+   Live-Öffnungsstatus
+   ========================================================================== */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  border-radius: 980px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-pill--light {
+  margin-top: 32px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.status-pill__dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+[data-state='open'] .status-pill__dot { background: var(--green); }
+[data-state='soon'] .status-pill__dot { background: var(--orange); }
+[data-state='closed'] .status-pill__dot { background: var(--red); }
+
+[data-state='open'] .status-pill__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(3); opacity: 0; }
+}
