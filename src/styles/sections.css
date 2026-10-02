@@ -465,6 +465,12 @@
   color: var(--accent-on-dark);
 }
 
+.price-row__price--text {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
 .prices__note {
   margin-top: 24px;
   font-size: 0.875rem;

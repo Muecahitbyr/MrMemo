@@ -24,9 +24,9 @@ export const MAP_EMBED_URL =
 /**
  * Preisliste – wird automatisch als Tabs gerendert.
  *
- * price:    Preis in Euro
+ * price:    Preis in Euro (null → „Preis im Salon“)
  * from:     true → „ab 35 €“
- * badge:    optionales Label, z. B. „Beliebt“
+ * badge:    optionales Label, z. B. „Klassiker“
  * featured: true → wird groß als Highlight-Karte neben der Liste gezeigt (nur 1×)
  */
 export const PRICE_CATEGORIES = [
@@ -34,37 +34,43 @@ export const PRICE_CATEGORIES = [
     id: 'herren',
     label: 'Herren',
     items: [
-      { name: 'Haarschnitt', desc: 'Waschen, Schneiden, Styling', price: 20 },
-      { name: 'Fade / Skin Fade', desc: 'Saubere Übergänge bis auf die Haut', price: 22 },
-      { name: 'Maschinenschnitt', desc: 'Eine Länge, rundum', price: 15 },
-      { name: 'Kinderhaarschnitt', desc: 'Bis 12 Jahre', price: 13 },
+      { name: 'Haarschnitt', price: 21 },
+      { name: 'Haarschnitt Fade', desc: 'Saubere Übergänge', price: 23 },
+      { name: 'Maschinenschnitt', price: 18 },
+      { name: 'Kopfrasur', desc: 'Mit Rasierschaum', price: 17 },
+      { name: 'Kinderhaarschnitt', desc: 'Bis 10 Jahre', price: 18 },
     ],
   },
   {
     id: 'bart',
-    label: 'Bart & Rasur',
+    label: 'Bart & Gesicht',
     items: [
-      { name: 'Bart schneiden', desc: 'Länge und Form', price: 10 },
-      { name: 'Bart mit Konturen', desc: 'Inkl. Konturen mit der Klinge', price: 13 },
-      { name: 'Klassische Rasur', desc: 'Mit Pinsel, Schaum und Klinge', price: 15 },
+      { name: 'Bartrasur & Styling', price: 17 },
+      { name: 'Augenbrauen zupfen', price: 8 },
+      { name: 'Augenbrauen mit Messer', price: 3 },
+      { name: 'Waxing', desc: 'Wangen, Ohren, Nase', price: 15 },
+      { name: 'Black Maske', price: 15 },
     ],
   },
   {
-    id: 'kombi',
-    label: 'Kombi',
+    id: 'pflege',
+    label: 'Pflege & Farbe',
     items: [
-      { name: 'Haarschnitt + Bart', desc: 'Der Klassiker – alles in einem Besuch', price: 28, badge: 'Beliebt', featured: true },
-      { name: 'Fade + Bart mit Konturen', desc: 'Das volle Programm', price: 32 },
-      { name: 'Haarschnitt + Rasur', desc: 'Frisch geschnitten, glatt rasiert', price: 33 },
+      { name: 'Haarwäsche', price: 15 },
+      { name: 'Haare färben', price: 15 },
+      { name: 'Dauerwelle', price: 40 },
     ],
   },
   {
-    id: 'coiffeur',
-    label: 'Coiffeur',
+    id: 'pakete',
+    label: 'Pakete',
     items: [
-      { name: 'Haare färben', desc: 'Je nach Länge und Aufwand', price: 35, from: true },
-      { name: 'Waschen & Föhnen', desc: 'Inkl. Pflege', price: 15, from: true },
-      { name: 'Haarstyling', desc: 'Für den besonderen Anlass', price: 12, from: true },
+      { name: 'Paket 1', desc: 'Haarschnitt + Bartrasur', price: 36, badge: 'Klassiker', featured: true },
+      // TODO: Preis für Paket 2 fehlt noch
+      { name: 'Paket 2', desc: 'Haarschnitt Fade + Bartrasur', price: null },
+      { name: 'Paket 3', desc: 'Haarschnitt + Bartrasur + Augenbrauen', price: 40 },
+      { name: 'Paket 4', desc: 'Haarschnitt + Bartrasur + Haarwäsche + Maske', price: 50 },
+      { name: 'Paket 5', desc: 'Haarschnitt + Bartrasur + Haarwäsche + Augenbrauen + Maske und mehr', price: 60 },
     ],
   },
 ];

@@ -2,7 +2,9 @@ import { gsap } from 'gsap';
 import { PRICE_CATEGORIES, PRICE_NOTE } from './data.js';
 
 const formatPrice = ({ price, from }) =>
-  `${from ? 'ab ' : ''}${price.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 2 })} €`;
+  price == null
+    ? 'Preis im Salon'
+    : `${from ? 'ab ' : ''}${price.toLocaleString('de-DE', { minimumFractionDigits: 0, maximumFractionDigits: 2 })} €`;
 
 function renderRow(item) {
   return `
@@ -11,7 +13,7 @@ function renderRow(item) {
         <p class="price-row__name">${item.name}${item.badge ? `<span class="price-row__badge">${item.badge}</span>` : ''}</p>
         ${item.desc ? `<p class="price-row__desc">${item.desc}</p>` : ''}
       </div>
-      <span class="price-row__price">${formatPrice(item)}</span>
+      <span class="price-row__price${item.price == null ? ' price-row__price--text' : ''}">${formatPrice(item)}</span>
     </li>`;
 }
 
