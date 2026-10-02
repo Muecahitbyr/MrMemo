@@ -9,14 +9,18 @@
   --line: #d2d2d7;
   --light: #f5f5f7;
   --white: #fff;
+  --paper: #fff; /* Hintergrund der hellen Sektionen */
+  --line-soft: #e8e8ed;
   --card-dark: #161617;
 
-  --accent-1: #f7d08a;
-  --accent-2: #e8894f;
-  --accent-3: #d4634a;
-  --accent-gradient: linear-gradient(95deg, var(--accent-1) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
-  --accent-on-dark: #f5b862;
-  --accent-on-light: #b35a1f;
+  /* Gold aus dem Logo (#CB9741) */
+  --accent-1: #f0d8a4;
+  --accent-2: #cb9741;
+  --accent-3: #a5772f;
+  --accent-rgb: 203, 151, 65;
+  --accent-gradient: linear-gradient(115deg, var(--accent-1) 0%, var(--accent-2) 48%, #e2bd77 72%, var(--accent-3) 100%);
+  --accent-on-dark: #d9ae5f;
+  --accent-on-light: #8a6526;
 
   --green: #30d158;
   --orange: #ff9f0a;
@@ -113,16 +117,18 @@ ul {
 }
 
 .section--light {
-  background: var(--light);
+  background: var(--paper);
   color: var(--ink);
 }
 
+/* Kleine Überschrift über Titeln – gesperrt wie „BARBERSHOP“ im Logo */
 .eyebrow {
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--accent-on-dark);
-  margin-bottom: 0.6em;
+  margin-bottom: 1.1em;
 }
 
 .eyebrow--dark {
@@ -158,6 +164,15 @@ ul {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .skip-link {

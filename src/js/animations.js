@@ -23,6 +23,7 @@ function splitWords(el) {
 function hero() {
   const section = document.querySelector('[data-hero]');
   const media = section.querySelector('[data-hero-media]');
+  const emblem = section.querySelector('[data-hero-emblem]');
   const img = section.querySelector('[data-hero-img]');
   const content = section.querySelector('[data-hero-content]');
   const lines = section.querySelectorAll('[data-hero-line]');
@@ -31,7 +32,8 @@ function hero() {
   gsap
     .timeline({ defaults: { ease: EASE } })
     .from(media, { scale: 1.25, duration: 2.2, ease: 'power2.out' })
-    .from(lines, { y: 40, opacity: 0, duration: 1.1, stagger: 0.12 }, 0.35);
+    .from(emblem, { scale: 0.6, rotate: -30, opacity: 0, duration: 1.6 }, 0.15)
+    .from(lines, { y: 40, opacity: 0, duration: 1.1, stagger: 0.12 }, 0.55);
 
   const tl = gsap.timeline({
     scrollTrigger: { trigger: section, start: 'top top', end: 'bottom top', scrub: true },
@@ -224,6 +226,19 @@ function reviews() {
 }
 
 function finale() {
+  // Emblem dreht sich beim Heranscrollen in Position – wie eine Schere, die sich schließt
+  gsap.fromTo(
+    '[data-finale-emblem]',
+    { rotate: -140, scale: 0.5, opacity: 0 },
+    {
+      rotate: 0,
+      scale: 1,
+      opacity: 1,
+      ease: 'none',
+      scrollTrigger: { trigger: '[data-finale-emblem]', start: 'top 100%', end: 'center 55%', scrub: true },
+    }
+  );
+
   gsap.fromTo(
     '[data-finale]',
     { scale: 0.7, opacity: 0.2, letterSpacing: '0.04em' },

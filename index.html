@@ -9,7 +9,8 @@
       content="Mr. Memo Barbershop & Coiffeur in Marktoberdorf. Haircuts & Shaves, Bart, Färben, Styling – ohne Termin. Mo–Mi 9–18, Do & Fr 8:30–19, Sa 8–18 Uhr."
     />
     <meta name="theme-color" content="#000000" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Mr. Memo – Barbershop & Coiffeur" />
@@ -25,6 +26,7 @@
         "@type": "HairSalon",
         "name": "Mr. Memo Barbershop & Coiffeur",
         "image": "/images/hero-shop.webp",
+        "logo": "/images/logo.jpg",
         "telephone": "+49 8342 9199941",
         "address": {
           "@type": "PostalAddress",
@@ -49,15 +51,7 @@
     <header class="nav" data-nav>
       <div class="nav__inner">
         <a href="#top" class="nav__logo" aria-label="Mr. Memo – nach oben">
-          <svg class="nav__mark" viewBox="0 0 32 32" aria-hidden="true">
-            <defs>
-              <linearGradient id="mark-gradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#f7d08a" /><stop offset=".55" stop-color="#e8894f" /><stop offset="1" stop-color="#d4634a" />
-              </linearGradient>
-            </defs>
-            <circle cx="16" cy="16" r="16" fill="url(#mark-gradient)" />
-            <path d="M8.5 22.5V10h2.6l4.9 6.9 4.9-6.9h2.6v12.5h-2.9v-7.9l-4.6 6.3-4.6-6.3v7.9Z" fill="#1d1d1f" />
-          </svg>
+          <img class="nav__mark" src="/images/logo-emblem.webp" alt="" width="36" height="36" />
           Mr.&nbsp;Memo
         </a>
 
@@ -99,9 +93,11 @@
         <div class="hero__shade"></div>
 
         <div class="hero__content" data-hero-content>
+          <img class="hero__emblem" src="/images/logo-emblem.webp" alt="Mr. Memo Barbershop – Logo" width="260" height="260" fetchpriority="high" data-hero-emblem />
           <p class="eyebrow" data-hero-line>Barbershop &amp; Coiffeur · Marktoberdorf</p>
-          <h1 class="hero__title" data-hero-line>Mr.&nbsp;Memo.</h1>
-          <p class="hero__subtitle" data-hero-line>Haircuts &amp; Shaves. <span class="text-gradient">Ohne Termin.</span></p>
+          <h1 class="hero__title" data-hero-line>
+            <span class="sr-only">Mr. Memo Barbershop: </span>Haircuts &amp; Shaves.<br /><span class="text-gradient">Ohne Termin.</span>
+          </h1>
 
           <div class="hero__actions" data-hero-line>
             <a class="btn btn--primary" href="#zeiten">Öffnungszeiten</a>
@@ -400,6 +396,7 @@
       <!-- ============ FINALE ============ -->
       <section class="finale">
         <div class="container">
+          <img class="finale__emblem" src="/images/logo-emblem.webp" alt="" width="160" height="160" loading="lazy" data-finale-emblem />
           <h2 class="finale__title" data-finale>Bis gleich.</h2>
           <p class="finale__sub" data-reveal>Mr. Memo Barbershop &amp; Coiffeur · Marktoberdorf</p>
         </div>
@@ -408,7 +405,7 @@
 
     <footer class="footer">
       <div class="container footer__inner">
-        <p>© <span data-year></span> Mr. Memo Barbershop &amp; Coiffeur</p>
+        <p class="footer__brand"><img src="/images/logo-emblem.webp" alt="" width="32" height="32" loading="lazy" /><span>© <span data-year></span> Mr. Memo Barbershop &amp; Coiffeur</span></p>
         <p>Georg-Fischer-Straße 26, 87616 Marktoberdorf · <a href="tel:+4983429199941">08342 9199941</a></p>
         <nav class="footer__links" aria-label="Rechtliches">
           <a href="/impressum.html">Impressum</a>

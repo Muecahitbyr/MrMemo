@@ -72,7 +72,10 @@ Auf Apple-Geräten wird automatisch die Systemschrift SF Pro verwendet, sonst In
   Bitte auch das JSON-LD in `index.html` (für Google) mit anpassen.
 - **Preise:** `src/js/data.js` → `PRICE_CATEGORIES`. Kategorien und Leistungen einfach hinzufügen/entfernen.
   `from: true` zeigt „ab …“, `badge` ein Label, `featured: true` macht eine Leistung zur großen Highlight-Karte.
-- **Farben:** `src/styles/base.css` → `--accent-1` bis `--accent-3`.
+- **Farben:** `src/styles/base.css` → `--accent-1` bis `--accent-3` (Gold aus dem Logo, `#CB9741`).
+- **Logo:** Original in `public/images/logo.jpg`. Auf der Seite wird das freigestellte Emblem
+  `logo-emblem.webp` verwendet (Navigation, Hero, Finale, Footer). Favicon: `public/favicon.png`.
+  Liegt das Logo als Vektor (SVG/PDF) vor, wird es damit noch schärfer.
 - **Eigene Fotos:** Dateien in `public/images/` mit gleichem Namen ersetzen (am besten WebP, ca. 1200–2400 px breit).
   Echte Fotos aus dem Laden wirken deutlich stärker als Stockfotos.
 - **Texte:** direkt in `index.html`.

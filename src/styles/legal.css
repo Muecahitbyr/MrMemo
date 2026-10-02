@@ -1,6 +1,6 @@
 /* Unterseiten: Impressum & Datenschutz */
 body.legal {
-  background: var(--light);
+  background: var(--paper);
   color: var(--ink);
 }
 
@@ -9,7 +9,7 @@ body.legal {
 }
 
 .legal .nav::before {
-  background: rgba(245, 245, 247, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
@@ -59,9 +59,9 @@ body.legal {
 .legal__note {
   padding: 16px 20px;
   border-radius: var(--radius-sm);
-  background: #fff4e5;
-  border: 1px solid #f5c98a;
-  color: #7a4a12 !important;
+  background: #faf5ea;
+  border: 1px solid #e3cc9c;
+  color: #6b4e1d !important;
   font-size: 0.9375rem;
 }
 
