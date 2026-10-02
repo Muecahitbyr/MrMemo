@@ -66,8 +66,7 @@ export const PRICE_CATEGORIES = [
     label: 'Pakete',
     items: [
       { name: 'Paket 1', desc: 'Haarschnitt + Bartrasur', price: 36, badge: 'Klassiker', featured: true },
-      // TODO: Preis für Paket 2 fehlt noch
-      { name: 'Paket 2', desc: 'Haarschnitt Fade + Bartrasur', price: null },
+      { name: 'Paket 2', desc: 'Haarschnitt Fade + Bartrasur', price: 38 },
       { name: 'Paket 3', desc: 'Haarschnitt + Bartrasur + Augenbrauen', price: 40 },
       { name: 'Paket 4', desc: 'Haarschnitt + Bartrasur + Haarwäsche + Maske', price: 50 },
       { name: 'Paket 5', desc: 'Haarschnitt + Bartrasur + Haarwäsche + Augenbrauen + Maske und mehr', price: 60 },
