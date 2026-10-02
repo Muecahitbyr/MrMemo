@@ -75,8 +75,8 @@ function renderTable() {
     const isToday = i === dayIndex;
     const time = entry.open ? `${formatTime(entry.open)} – ${formatTime(entry.close)}` : 'Geschlossen';
     return `
-      <li class="hours__row${isToday ? ' is-today' : ''}${entry.open ? '' : ' is-closed'}">
-        <span class="hours__day">${entry.day}${isToday ? '<span class="hours__badge">Heute</span>' : ''}</span>
+      <li class="hours__row${isToday ? ' is-today' : ''}${entry.open ? '' : ' is-closed'}"${isToday ? ' aria-current="date"' : ''}>
+        <span class="hours__day">${entry.day}${isToday ? '<span class="sr-only"> (heute)</span>' : ''}</span>
         <span class="hours__time">${time}</span>
       </li>`;
   }).join('');

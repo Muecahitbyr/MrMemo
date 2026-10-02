@@ -212,19 +212,8 @@ function gallery(mm) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Rezensionen & Finale                                                       */
+/*  Finale                                                       */
 /* -------------------------------------------------------------------------- */
-function reviews() {
-  gsap.from('[data-reviews] .review', {
-    y: 80,
-    opacity: 0,
-    duration: 1.1,
-    ease: EASE,
-    stagger: 0.15,
-    scrollTrigger: { trigger: '[data-reviews]', start: 'top 85%', once: true },
-  });
-}
-
 function finale() {
   // Emblem dreht sich beim Heranscrollen in Position – wie eine Schere, die sich schließt
   gsap.fromTo(
@@ -271,7 +260,6 @@ export function initAnimations({ reducedMotion }) {
   story();
   counters();
   gallery(mm);
-  reviews();
   finale();
 
   // Nach dem Laden aller Bilder Positionen neu berechnen

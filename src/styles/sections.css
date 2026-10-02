@@ -355,30 +355,30 @@
 }
 
 /* Segmented Control (wie in iOS) */
+.prices__menu {
+  container-type: inline-size;
+}
+
 .segmented {
   position: relative;
   display: inline-flex;
-  max-width: 100%;
   padding: 4px;
   border-radius: 980px;
   background: #1d1d1f;
-  overflow-x: auto;
-  scrollbar-width: none;
 }
 
-.segmented::-webkit-scrollbar {
-  display: none;
-}
-
+/* Position und Größe setzt src/js/prices.js passend zum aktiven Tab */
 .segmented__indicator {
   position: absolute;
-  top: 4px;
-  bottom: 4px;
+  top: 0;
   left: 0;
   border-radius: 980px;
   background: var(--accent-gradient);
   box-shadow: 0 3px 14px rgba(var(--accent-rgb), 0.35);
-  transition: transform 0.45s cubic-bezier(0.3, 0.8, 0.2, 1), width 0.45s cubic-bezier(0.3, 0.8, 0.2, 1);
+  transition:
+    transform 0.45s cubic-bezier(0.3, 0.8, 0.2, 1),
+    width 0.45s cubic-bezier(0.3, 0.8, 0.2, 1),
+    height 0.45s cubic-bezier(0.3, 0.8, 0.2, 1);
 }
 
 .segmented__tab {
@@ -400,6 +400,25 @@
 
 .segmented__tab[aria-selected='true'] {
   color: var(--ink);
+}
+
+/* Zu schmal für eine Zeile (Handy, Tablet): alle Kategorien als 2×2-Raster sichtbar */
+@container (max-width: 539px) {
+  .segmented {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    border-radius: 22px;
+  }
+
+  .segmented__tab {
+    padding: 13px 8px;
+    border-radius: 18px;
+  }
+
+  .segmented__indicator {
+    border-radius: 18px;
+  }
 }
 
 /* Alle Panels im selben Grid-Feld → konstante Höhe */
@@ -779,15 +798,40 @@
   background: var(--black);
 }
 
-.reviews__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+/* Endlos-Band (wird in src/js/reviews.js aufgebaut) */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__group {
+  display: flex;
   gap: 20px;
+  padding-right: 20px; /* gleich dem gap → nahtloser Übergang zur Kopie */
+}
+
+/* von links nach rechts: startet um eine Gruppenbreite nach links versetzt */
+@keyframes marquee {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
 }
 
 .review {
   display: flex;
+  flex: none;
   flex-direction: column;
+  width: clamp(280px, 78vw, 400px);
   padding: clamp(28px, 3.5vw, 44px);
   border-radius: var(--radius);
   background: var(--card-dark);
@@ -821,12 +865,6 @@
   text-align: center;
 }
 
-@media (max-width: 833px) {
-  .reviews__grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* ==========================================================================
    Öffnungszeiten
    ========================================================================== */
@@ -842,7 +880,8 @@
 }
 
 .hours__list {
-  padding: clamp(12px, 2vw, 20px) clamp(24px, 3vw, 40px);
+  --pad-x: clamp(24px, 3vw, 40px);
+  padding: clamp(12px, 2vw, 20px) var(--pad-x);
   border: 1px solid rgba(var(--accent-rgb), 0.45);
   border-radius: var(--radius);
   background: var(--black);
@@ -868,24 +907,20 @@
   color: var(--muted);
 }
 
+/* Heutiger Tag: ganze Zeile gold hinterlegt (wie das aktive Preis-Tab) */
 .hours__row.is-today {
-  font-weight: 700;
-  color: var(--accent-on-dark);
-}
-
-.hours__day {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.hours__badge {
-  padding: 3px 10px;
-  border-radius: 980px;
+  margin-inline: calc(var(--pad-x) * -0.5);
+  padding-inline: calc(var(--pad-x) * 0.5);
+  border-radius: 16px;
   background: var(--accent-gradient);
   color: var(--ink);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 12px 30px -12px rgba(var(--accent-rgb), 0.6);
+}
+
+.hours__row.is-today,
+.hours__row.is-today + .hours__row {
+  border-top-color: transparent;
 }
 
 @media (max-width: 833px) {
@@ -1095,5 +1130,13 @@
 
   .zoom__frame {
     clip-path: none;
+  }
+
+  .marquee {
+    overflow-x: auto;
+  }
+
+  .marquee__track {
+    animation: none;
   }
 }

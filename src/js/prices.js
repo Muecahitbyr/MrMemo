@@ -61,9 +61,11 @@ export function initPrices({ reducedMotion }) {
   const tabs = [...tabList.querySelectorAll('[data-price-tab]')];
   const panels = [...panelsEl.querySelectorAll('[data-price-panel]')];
 
+  // Funktioniert für die einzeilige Leiste und das 2×2-Raster (mobil)
   const moveIndicator = (tab) => {
     indicator.style.width = `${tab.offsetWidth}px`;
-    indicator.style.transform = `translateX(${tab.offsetLeft}px)`;
+    indicator.style.height = `${tab.offsetHeight}px`;
+    indicator.style.transform = `translate(${tab.offsetLeft}px, ${tab.offsetTop}px)`;
   };
 
   const select = (index, { focus = false } = {}) => {

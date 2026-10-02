@@ -7,6 +7,7 @@ import { initNav } from './js/nav.js';
 import { initOpeningHours } from './js/opening-hours.js';
 import { initMap } from './js/map.js';
 import { initPrices } from './js/prices.js';
+import { initReviewsMarquee } from './js/reviews.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -15,6 +16,7 @@ document.querySelectorAll('[data-year]').forEach((el) => (el.textContent = new D
 initOpeningHours();
 initMap();
 initPrices({ reducedMotion });
+initReviewsMarquee({ reducedMotion });
 
 const lenis = initSmoothScroll({ reducedMotion });
 initAnimations({ reducedMotion });
