@@ -722,7 +722,16 @@
 }
 
 .gallery__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
   margin-bottom: clamp(32px, 5vh, 56px);
+}
+
+.gallery__social {
+  padding-inline: 0;
 }
 
 .gallery__track {
@@ -1084,6 +1093,7 @@
 .footer__inner {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 12px 32px;
 }
@@ -1106,6 +1116,12 @@
 .footer__links {
   display: flex;
   gap: 24px;
+}
+
+.footer__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* ==========================================================================

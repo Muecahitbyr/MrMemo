@@ -176,6 +176,8 @@
 .is-menu-open .mobile-menu a:nth-child(6) { transition-delay: 0.15s; }
 .is-menu-open .mobile-menu a:nth-child(7) { transition-delay: 0.18s; }
 
+.is-menu-open .mobile-menu a:nth-child(8) { transition-delay: 0.21s; }
+
 .mobile-menu__phone {
   margin-top: 16px;
   color: var(--accent-on-dark);
@@ -194,6 +196,21 @@
   .nav__toggle {
     display: block;
   }
+}
+
+.mobile-menu .mobile-menu__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+/* Icons in Text und Buttons */
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
 }
 
 /* ==========================================================================
